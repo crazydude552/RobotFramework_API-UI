@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.6 on win32)" generated="2026-07-22T14:10:38.006708" rpa="false" schemaversion="5">
+<suite id="s1" name="Api &amp; Ui">
+<suite id="s1-s1" name="Api" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\tests\api">
+<suite id="s1-s1-s1" name="Customer Api" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\tests\api\customer_api.robot">
+<test id="s1-s1-s1-t1" name="Scenario: Create Active Customer Record Via API" line="5">
+<kw name="When a new client payload is requested for &quot;Acme Corp&quot;" owner="customer_api_steps" source_name="a new client payload is requested for &quot;${customer_name}&quot;">
+<kw name="Execute Customer Creation POST" owner="CustomerClient">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.164121" level="INFO">${headers} = {'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${auth_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.163729" elapsed="0.000424"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.164521" level="INFO">${payload} = {'name': 'Acme Corp', 'status': 'active', 'tier': 'enterprise'}</msg>
+<var>${payload}</var>
+<arg>name=${customer_name}</arg>
+<arg>status=active</arg>
+<arg>tier=enterprise</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.164262" elapsed="0.000279"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-07-22T14:10:38.885940" level="INFO">POST Request : url=https://postman-echo.com/post 
+ path_url=/post 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json', 'Content-Length': '63'} 
+ body=b'{"name": "Acme Corp", "status": "active", "tier": "enterprise"}' 
+ </msg>
+<msg time="2026-07-22T14:10:38.886055" level="INFO">POST Response : url=https://postman-echo.com/post 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 22 Jul 2026 12:10:38 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'etag': 'W/"1cd-27e/RlNdI9iDHGV142Rk0U8dHsM"', 'vary': 'Accept-Encoding', 'x-envoy-upstream-service-time': '5', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': 'sails.sid=s%3AoK2sY_8PZesE8hsTD4-D7MHyXFtnNfjX.sQoY8WKdqqIjI1f3uQytLvWJe%2BrtGAplc0ZPV65xpWc; Path=/; HttpOnly, __cf_bm=ntzc0SsYunb8i87zrSLazQHPuF0_KO.9OL0lASt1BuY-1784722238.4014394-1.0.1.1-B1YGWtqQQF3kqvAhv2uWYipivvFQk5qGX0p3mGefcwg_AwO61gxzuCzaDFnXz_7PiMhjY83aF4dbxTNOn37nf4xD_D_9LRbxqHMOkP3c5ZSzjZEopFXRwG0AWecQna4y; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com; Expires=Wed, 22 Jul 2026 12:40:38 GMT, _cfuvid=Y1v7Hj0CdovpakMMGpSgEAmvYqwbvQ32uVGGLEdyvkw-1784722238.4014394-1.0.1.1-_yvZJ0_fjCS7FUVsM7AuBf6eb9y4SHYHn5tXMWigXz8; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': 'a1f257e6093328a9-BRU'} 
+ body={"args":{},"data":{"name":"Acme Corp","status":"active","tier":"enterprise"},"files":{},"form":{},"headers":{"host":"postman-echo.com","user-agent":"python-requests/2.34.2","accept-encoding":"gzip, br","content-type":"application/json","authorization":"Bearer sk_enterprise_mock_token_2026","x-forwarded-proto":"https","accept":"*/*","content-length":"63"},"json":{"name":"Acme Corp","status":"active","tier":"enterprise"},"url":"https://postman-echo.com/post"} 
+ </msg>
+<msg time="2026-07-22T14:10:38.886172" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${BASE_URL_API}/post</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${payload}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.164619" elapsed="0.721575"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-07-22T14:10:38.886261" elapsed="0.000049"/>
+</return>
+<msg time="2026-07-22T14:10:38.886436" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${customer_name}</arg>
+<arg>${token}</arg>
+<status status="PASS" start="2026-07-22T14:10:38.163217" elapsed="0.723239"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.886883" level="INFO">${API_RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${API_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.886576" elapsed="0.000341"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:38.162443" elapsed="0.724523"/>
+</kw>
+<kw name="Then the operational service confirms record creation" owner="customer_api_steps">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.888109" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${API_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.887576" elapsed="0.000589"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.888742" level="INFO">${response_json} = {'args': {}, 'data': {'name': 'Acme Corp', 'status': 'active', 'tier': 'enterprise'}, 'files': {}, 'form': {}, 'headers': {'host': 'postman-echo.com', 'user-agent': 'python-requests/2.34.2', 'accept-e...</msg>
+<var>${response_json}</var>
+<arg>${API_RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.888261" elapsed="0.000505"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['name']}</arg>
+<arg>Acme Corp</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.888848" elapsed="0.000386"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:38.887350" elapsed="0.001931"/>
+</kw>
+<tag>API</tag>
+<tag>Regression</tag>
+<status status="PASS" start="2026-07-22T14:10:38.161780" elapsed="0.727754"/>
+</test>
+<test id="s1-s1-s1-t2" name="Scenario: Retrieve Account Metadata Details Via GET" line="10">
+<kw name="When the system queries for account details using configuration data" owner="customer_api_steps">
+<kw name="Execute Get Customer Details" owner="CustomerClient">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-07-22T14:10:38.890898" level="INFO">${headers} = {'Authorization': 'Bearer sk_enterprise_mock_token_2026'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${auth_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.890630" elapsed="0.000287"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-07-22T14:10:39.345566" level="INFO">GET Request : url=https://postman-echo.com/get?id=USR-9982&amp;include_profile=true 
+ path_url=/get?id=USR-9982&amp;include_profile=true 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer sk_enterprise_mock_token_2026'} 
+ body=None 
+ </msg>
+<msg time="2026-07-22T14:10:39.345678" level="INFO">GET Response : url=https://postman-echo.com/get?id=USR-9982&amp;include_profile=true 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 22 Jul 2026 12:10:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'etag': 'W/"144-cOPGX8G1atz3oVdEG8iA1ZrhBpQ"', 'vary': 'Accept-Encoding', 'x-envoy-upstream-service-time': '4', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': 'sails.sid=s%3AMu_Vl1worr7n8Hgg-9SXzcDyccyaIjRY.ps9E3s9DZ7dv76R5XDBErCBnY8lO3llG9elJC75x9qk; Path=/; HttpOnly, __cf_bm=AkjBuZw.4MsLmaeMU9LP6s4RtIl272rzU4oFZ3dRCU8-1784722239.0558536-1.0.1.1-u94sqLruJ.QPohbYCLcrydPPJ9guQYe_xhMDmLmpEpdfzWB3CxECAsYf.Zuwob2.CIIE5xWsPjoQ3BzIn_JaebBVNITu5KyOyKU1iXj9TZUwexXl0D4jaJSSKhnxNn4o; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com; Expires=Wed, 22 Jul 2026 12:40:39 GMT, _cfuvid=XxvZp6lNkx.eCY3QkmLi4tGU3iSpv7UGIM1kKRc..O0-1784722239.0558536-1.0.1.1-JBauYKW7xgs2cDbBdLHuTJ1fQ6X9S8YLHpHc1BAn59s; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com', 'Content-Encoding': 'gzip', 'Server': 'cloudflare', 'CF-RAY': 'a1f257ea1890b9c0-BRU'} 
+ body={"args":{"id":"USR-9982","include_profile":"true"},"headers":{"host":"postman-echo.com","x-forwarded-proto":"https","accept-encoding":"gzip, br","user-agent":"python-requests/2.34.2","authorization":"Bearer sk_enterprise_mock_token_2026","accept":"*/*"},"url":"https://postman-echo.com/get?id=USR-9982&amp;include_profile=true"} 
+ </msg>
+<msg time="2026-07-22T14:10:39.345917" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${BASE_URL_API}/get</arg>
+<arg>headers=${headers}</arg>
+<arg>params=${query_params}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-07-22T14:10:38.891005" elapsed="0.454941"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-07-22T14:10:39.346033" elapsed="0.000065"/>
+</return>
+<msg time="2026-07-22T14:10:39.346256" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${get_user_params}</arg>
+<arg>${token}</arg>
+<status status="PASS" start="2026-07-22T14:10:38.890427" elapsed="0.455855"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.346895" level="INFO">${API_RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${API_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.346436" elapsed="0.000520"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:38.890224" elapsed="0.456808"/>
+</kw>
+<kw name="Then the response payload matches the requested query parameters" owner="customer_api_steps">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.348268" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${API_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.347812" elapsed="0.000517"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.348987" level="INFO">${response_json} = {'args': {'id': 'USR-9982', 'include_profile': 'true'}, 'headers': {'host': 'postman-echo.com', 'x-forwarded-proto': 'https', 'accept-encoding': 'gzip, br', 'user-agent': 'python-requests/2.34.2', 'au...</msg>
+<var>${response_json}</var>
+<arg>${API_RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.348439" elapsed="0.000575"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['args']['id']}</arg>
+<arg>${get_user_params['id']}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.349115" elapsed="0.000808"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['args']['include_profile']}</arg>
+<arg>${get_user_params['include_profile']}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.350037" elapsed="0.000736"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:39.347626" elapsed="0.003208"/>
+</kw>
+<tag>API</tag>
+<tag>Regression</tag>
+<status status="PASS" start="2026-07-22T14:10:38.889881" elapsed="0.461168"/>
+</test>
+<test id="s1-s1-s1-t3" name="Scenario: Ingest Heavy Structural Record Sets Via Bulk POST" line="15">
+<kw name="When a bulk payload is transmitted containing complete enterprise data" owner="customer_api_steps">
+<kw name="Execute Large Data Submission POST" owner="CustomerClient">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.352264" level="INFO">${headers} = {'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${auth_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.352030" elapsed="0.000252"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-07-22T14:10:39.812523" level="INFO">POST Request : url=https://postman-echo.com/post 
+ path_url=/post 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json', 'Content-Length': '387'} 
+ body=b'{"company": "Acme Enterprise Solutions", "industry": "Quality Engineering", "active": true, "metadata": {"version": "2.4.1", "environment": "Staging"}, "departments": [{"name": "Information Technology", "headcount": 142, "budget": 1250000.5}, {"name": "Quality Assurance", "headcount": 38, "budget": 450000.0}], "tags": ["automated", "enterprise", "performance-tested", "yaml-injected"]}' 
+ </msg>
+<msg time="2026-07-22T14:10:39.812730" level="INFO">POST Response : url=https://postman-echo.com/post 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 22 Jul 2026 12:10:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'etag': 'W/"424-G0Q1JJvlLzVxjmCIve8MOAT3m70"', 'vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'x-envoy-upstream-service-time': '7', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': 'sails.sid=s%3AHrUDmKiwzW8IH1gZYd73Ib8xQr9z68M3.jcs48dsJ08dAtcl%2Bdirtfxsf6q%2Fgcl1C6lre%2FjdpSbY; Path=/; HttpOnly, __cf_bm=ZYIFrXld7GtsArEAIrZMtOC7iLq7AGfF9mTTHrei6hA-1784722239.5539153-1.0.1.1-bKCx0xpi7AiZ3FbIczCN7FKbZW5.WS5_myvpohLf0RCoJ07f_.TfUQgc_0Ehs_CiMDBr7C7mPTLbT22km2e54zd0DcZJZ18pflfeBXO.5Yq5ljqhjYmfa7oXjn7NhOEb; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com; Expires=Wed, 22 Jul 2026 12:40:39 GMT, _cfuvid=VK4f9RLQaxdKcsse.GS.8_MCRLWsIrX4jdOrIXI0vpU-1784722239.5539153-1.0.1.1-le2f2gxjarlnQQtgE1bZ5WjvlmDZ0HzCoZ3wxrSCopY; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com', 'Server': 'cloudflare', 'CF-RAY': 'a1f257ed3e645661-BRU'} 
+ body={"args":{},"data":{"company":"Acme Enterprise Solutions","industry":"Quality Engineering","active":true,"metadata":{"version":"2.4.1","environment":"Staging"},"departments":[{"name":"Information Technology","headcount":142,"budget":1250000.5},{"name":"Quality Assurance","headcount":38,"budget":450000}],"tags":["automated","enterprise","performance-tested","yaml-injected"]},"files":{},"form":{},"headers":{"host":"postman-echo.com","user-agent":"python-requests/2.34.2","accept-encoding":"gzip, br","content-type":"application/json","authorization":"Bearer sk_enterprise_mock_token_2026","x-forwarded-proto":"https","accept":"*/*","content-length":"387"},"json":{"company":"Acme Enterprise Solutions","industry":"Quality Engineering","active":true,"metadata":{"version":"2.4.1","environment":"Staging"},"departments":[{"name":"Information Technology","headcount":142,"budget":1250000.5},{"name":"Quality Assurance","headcount":38,"budget":450000}],"tags":["automated","enterprise","performance-tested","yaml-injected"]},"url":"https://postman-echo.com/post"} 
+ </msg>
+<msg time="2026-07-22T14:10:39.813003" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${BASE_URL_API}/post</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${large_json_data}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.352353" elapsed="0.460710"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-07-22T14:10:39.813222" elapsed="0.000080"/>
+</return>
+<msg time="2026-07-22T14:10:39.813593" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${large_payload}</arg>
+<arg>${token}</arg>
+<status status="PASS" start="2026-07-22T14:10:39.351845" elapsed="0.461802"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.814726" level="INFO">${API_RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${API_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.813938" elapsed="0.000877"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:39.351666" elapsed="0.463275"/>
+</kw>
+<kw name="Then the data repository verifies structural integrity of the complex data" owner="customer_api_steps">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.816772" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${API_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.815937" elapsed="0.000920"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.817965" level="INFO">${response_json} = {'args': {}, 'data': {'company': 'Acme Enterprise Solutions', 'industry': 'Quality Engineering', 'active': True, 'metadata': {'version': '2.4.1', 'environment': 'Staging'}, 'departments': [{'name': 'I...</msg>
+<var>${response_json}</var>
+<arg>${API_RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.817052" elapsed="0.000964"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['metadata']['environment']}</arg>
+<arg>Staging</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.818178" elapsed="0.000740"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.819766" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response_json['data']['departments'][0]['headcount']}</arg>
+<arg>142</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.819073" elapsed="0.000763"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${response_json['data']['tags']}</arg>
+<arg>performance-tested</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.819977" elapsed="0.000768"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:39.815547" elapsed="0.005285"/>
+</kw>
+<tag>API</tag>
+<tag>DataIngestion</tag>
+<status status="PASS" start="2026-07-22T14:10:39.351337" elapsed="0.469966"/>
+</test>
+<status status="PASS" start="2026-07-22T14:10:38.049570" elapsed="1.772618"/>
+</suite>
+<suite id="s1-s1-s2" name="Data Driven Payloads" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\tests\api\data_driven_payloads.robot">
+<test id="s1-s1-s2-t1" name="Scenario: Overwrite Base Data Fields Dynamically and Assert Modifications" line="5">
+<kw name="When a customized payload is constructed and sent with values:" owner="data_driven_steps">
+<kw name="Modify Base Payload With Data Table" owner="DataTransformer">
+<kw name="Copy Dictionary" owner="Collections">
+<msg time="2026-07-22T14:10:39.833086" level="INFO">${mutated_payload} = {'company': 'Acme Enterprise Solutions', 'industry': 'Quality Engineering', 'active': True, 'metadata': {'version': '2.4.1', 'environment': 'Staging'}, 'departments': [{'name': 'Information Technology...</msg>
+<var>${mutated_payload}</var>
+<arg>${base_dict}</arg>
+<arg>deep=True</arg>
+<doc>Returns a copy of the given dictionary.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.832878" elapsed="0.000232"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.835302" level="INFO">Length is 7.</msg>
+<msg time="2026-07-22T14:10:39.835384" level="INFO">${total_items} = 7</msg>
+<var>${total_items}</var>
+<arg>${data_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.833186" elapsed="0.002215"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.836437" level="INFO">${key} = | company</msg>
+<var>${key}</var>
+<arg>${data_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.835805" elapsed="0.000656"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.836826" level="INFO">${next_index} = 1</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.836548" elapsed="0.000296"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837009" elapsed="0.000013"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.836911" elapsed="0.000131"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.836889" elapsed="0.000169"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.837504" level="INFO">${value} = | Global Tech Corp |</msg>
+<var>${value}</var>
+<arg>${data_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.837121" elapsed="0.000400"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>company=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837674" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837571" elapsed="0.000137"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload['metadata']}</arg>
+<arg>environment=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837813" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837724" elapsed="0.000122"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${boolean_val}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837949" elapsed="0.000012"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>active=${boolean_val}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.838014" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.837860" elapsed="0.000185"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.837558" elapsed="0.000501"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2026-07-22T14:10:39.835724" elapsed="0.002352"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.838657" level="INFO">${key} = | metadata.environment | Production</msg>
+<var>${key}</var>
+<arg>${data_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.838256" elapsed="0.000420"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.838948" level="INFO">${next_index} = 3</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.838744" elapsed="0.000221"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839093" elapsed="0.000010"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839011" elapsed="0.000111"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.838998" elapsed="0.000138"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.839566" level="INFO">${value} = |</msg>
+<var>${value}</var>
+<arg>${data_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.839191" elapsed="0.000392"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>company=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839738" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839639" elapsed="0.000133"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload['metadata']}</arg>
+<arg>environment=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839878" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839787" elapsed="0.000124"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${boolean_val}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.840016" elapsed="0.000011"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>active=${boolean_val}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.840080" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.839925" elapsed="0.000187"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.839629" elapsed="0.000497"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2026-07-22T14:10:39.838210" elapsed="0.001930"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.840699" level="INFO">${key} = | active</msg>
+<var>${key}</var>
+<arg>${data_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.840306" elapsed="0.000410"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.840963" level="INFO">${next_index} = 5</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.840776" elapsed="0.000204"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841105" elapsed="0.000008"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841025" elapsed="0.000105"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.841014" elapsed="0.000129"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.841573" level="INFO">${value} = | false</msg>
+<var>${value}</var>
+<arg>${data_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.841198" elapsed="0.000392"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>company=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841730" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841633" elapsed="0.000131"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload['metadata']}</arg>
+<arg>environment=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841866" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841779" elapsed="0.000119"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${boolean_val}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841999" elapsed="0.000011"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>active=${boolean_val}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.842065" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.841912" elapsed="0.000183"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.841623" elapsed="0.000486"/>
+</if>
+<var name="${index}">4</var>
+<status status="PASS" start="2026-07-22T14:10:39.840263" elapsed="0.001861"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.842683" level="INFO">${key} = |</msg>
+<var>${key}</var>
+<arg>${data_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.842292" elapsed="0.000410"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.842954" level="INFO">${next_index} = 7</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.842766" elapsed="0.000204"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="PASS" start="2026-07-22T14:10:39.843090" elapsed="0.000024"/>
+</break>
+<status status="PASS" start="2026-07-22T14:10:39.843012" elapsed="0.000121"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:39.843002" elapsed="0.000146"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${value}</var>
+<arg>${data_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843206" elapsed="0.000012"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>company=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843305" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843255" elapsed="0.000083"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload['metadata']}</arg>
+<arg>environment=${value}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843400" elapsed="0.000010"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843353" elapsed="0.000077"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${boolean_val}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843493" elapsed="0.000011"/>
+</kw>
+<kw name="Set To Dictionary" owner="Collections">
+<arg>${mutated_payload}</arg>
+<arg>active=${boolean_val}</arg>
+<doc>Adds the given ``key_value_pairs`` and/or ``items`` to the ``dictionary``.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843555" elapsed="0.000013"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843444" elapsed="0.000143"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:39.843247" elapsed="0.000363"/>
+</if>
+<var name="${index}">6</var>
+<status status="PASS" start="2026-07-22T14:10:39.842246" elapsed="0.001380"/>
+</iter>
+<var>${index}</var>
+<value>0</value>
+<value>${total_items}</value>
+<value>2</value>
+<status status="PASS" start="2026-07-22T14:10:39.835467" elapsed="0.008181"/>
+</for>
+<return>
+<value>${mutated_payload}</value>
+<status status="PASS" start="2026-07-22T14:10:39.843686" elapsed="0.000019"/>
+</return>
+<msg time="2026-07-22T14:10:39.843807" level="INFO">${custom_payload} = {'company': 'Acme Enterprise Solutions', 'industry': 'Quality Engineering', 'active': True, 'metadata': {'version': '2.4.1', 'environment': 'Staging'}, 'departments': [{'name': 'Information Technology...</msg>
+<var>${custom_payload}</var>
+<arg>${large_payload}</arg>
+<arg>@{fields_table}</arg>
+<status status="PASS" start="2026-07-22T14:10:39.832685" elapsed="0.011140"/>
+</kw>
+<kw name="Execute Large Data Submission POST" owner="CustomerClient">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-07-22T14:10:39.844352" level="INFO">${headers} = {'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Authorization=Bearer ${auth_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.844127" elapsed="0.000242"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-07-22T14:10:40.278991" level="INFO">POST Request : url=https://postman-echo.com/post 
+ path_url=/post 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer sk_enterprise_mock_token_2026', 'Content-Type': 'application/json', 'Content-Length': '387'} 
+ body=b'{"company": "Acme Enterprise Solutions", "industry": "Quality Engineering", "active": true, "metadata": {"version": "2.4.1", "environment": "Staging"}, "departments": [{"name": "Information Technology", "headcount": 142, "budget": 1250000.5}, {"name": "Quality Assurance", "headcount": 38, "budget": 450000.0}], "tags": ["automated", "enterprise", "performance-tested", "yaml-injected"]}' 
+ </msg>
+<msg time="2026-07-22T14:10:40.279136" level="INFO">POST Response : url=https://postman-echo.com/post 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 22 Jul 2026 12:10:40 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'etag': 'W/"424-G0Q1JJvlLzVxjmCIve8MOAT3m70"', 'vary': 'Accept-Encoding', 'Content-Encoding': 'gzip', 'x-envoy-upstream-service-time': '7', 'cf-cache-status': 'DYNAMIC', 'Set-Cookie': 'sails.sid=s%3AvS5UaOPvS7BTaVYQHcfQTVa2BvfWOL4L.GHOS3nfsXVlNSv3%2BtTe9YsHGPy6sqkArn60t7daTV%2BQ; Path=/; HttpOnly, __cf_bm=H80.N1OTK2Jx9j0xquFa4I_h1L2uXrhA035t63pUGkU-1784722239.9944365-1.0.1.1-A5ssBrtjXmDGSfXIN0BnF6OMuXWYqm.ElB0J4niV1bBC7Jokr1ZxnUUfx1qlHhtcOOWzT8GW175OnEEE_jYSCuH7wvGw3LGRKRj_1t..3rEqGSySgYlBbblScer.H5p_; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com; Expires=Wed, 22 Jul 2026 12:40:40 GMT, _cfuvid=iWJi6FUfT0FqxFnUZZuGG6.xdpdExaHyu2KL5io2liU-1784722239.9944365-1.0.1.1-S7J.i27x4yVENhfnfHeEWuyp0WEknLrwvefQDOffuBg; HttpOnly; SameSite=None; Secure; Path=/; Domain=postman-echo.com', 'Server': 'cloudflare', 'CF-RAY': 'a1f257effe09fad8-BRU'} 
+ body={"args":{},"data":{"company":"Acme Enterprise Solutions","industry":"Quality Engineering","active":true,"metadata":{"version":"2.4.1","environment":"Staging"},"departments":[{"name":"Information Technology","headcount":142,"budget":1250000.5},{"name":"Quality Assurance","headcount":38,"budget":450000}],"tags":["automated","enterprise","performance-tested","yaml-injected"]},"files":{},"form":{},"headers":{"host":"postman-echo.com","user-agent":"python-requests/2.34.2","accept-encoding":"gzip, br","content-type":"application/json","authorization":"Bearer sk_enterprise_mock_token_2026","x-forwarded-proto":"https","accept":"*/*","content-length":"387"},"json":{"company":"Acme Enterprise Solutions","industry":"Quality Engineering","active":true,"metadata":{"version":"2.4.1","environment":"Staging"},"departments":[{"name":"Information Technology","headcount":142,"budget":1250000.5},{"name":"Quality Assurance","headcount":38,"budget":450000}],"tags":["automated","enterprise","performance-tested","yaml-injected"]},"url":"https://postman-echo.com/post"} 
+ </msg>
+<msg time="2026-07-22T14:10:40.279333" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=${BASE_URL_API}/post</arg>
+<arg>headers=${headers}</arg>
+<arg>json=${large_json_data}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-07-22T14:10:39.844429" elapsed="0.434945"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-07-22T14:10:40.279490" elapsed="0.000057"/>
+</return>
+<msg time="2026-07-22T14:10:40.279754" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${custom_payload}</arg>
+<arg>${token}</arg>
+<status status="PASS" start="2026-07-22T14:10:39.843933" elapsed="0.435861"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.280541" level="INFO">${DATA_DRIVEN_RESPONSE} = &lt;Response [200]&gt;</msg>
+<arg>${DATA_DRIVEN_RESPONSE}</arg>
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.279992" elapsed="0.000612"/>
+</kw>
+<arg>| company</arg>
+<arg>| Global Tech Corp |</arg>
+<arg>| metadata.environment | Production</arg>
+<arg>|</arg>
+<arg>| active</arg>
+<arg>| false</arg>
+<arg>|</arg>
+<status status="PASS" start="2026-07-22T14:10:39.832375" elapsed="0.448320"/>
+</kw>
+<kw name="Then the payload execution response reflects our target values:" owner="data_driven_steps">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.283083" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${DATA_DRIVEN_RESPONSE.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.282185" elapsed="0.001007"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.284202" level="INFO">${response_json} = {'args': {}, 'data': {'company': 'Acme Enterprise Solutions', 'industry': 'Quality Engineering', 'active': True, 'metadata': {'version': '2.4.1', 'environment': 'Staging'}, 'departments': [{'name': 'I...</msg>
+<var>${response_json}</var>
+<arg>${DATA_DRIVEN_RESPONSE.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.283371" elapsed="0.000863"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.284819" level="INFO">Length is 7.</msg>
+<msg time="2026-07-22T14:10:40.284949" level="INFO">${total_items} = 7</msg>
+<var>${total_items}</var>
+<arg>${expected_table}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.284450" elapsed="0.000539"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.286975" level="INFO">${key} = | company</msg>
+<var>${key}</var>
+<arg>${expected_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.285842" elapsed="0.001185"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.287638" level="INFO">${next_index} = 1</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.287226" elapsed="0.000440"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.287926" elapsed="0.000017"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.287783" elapsed="0.000195"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.287757" elapsed="0.000247"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.288767" level="INFO">${value} = | Global Tech Corp |</msg>
+<var>${value}</var>
+<arg>${expected_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.288115" elapsed="0.000680"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['company']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289034" elapsed="0.000019"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.288872" elapsed="0.000216"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['metadata']['environment']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289264" elapsed="0.000017"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289113" elapsed="0.000204"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_bool}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289521" elapsed="0.000018"/>
+</kw>
+<if>
+<branch type="IF" condition="${expected_bool}">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response_json['data']['active']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289675" elapsed="0.000017"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289601" elapsed="0.000121"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be False">
+<arg>${response_json['data']['active']}</arg>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289900" elapsed="0.000023"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289745" elapsed="0.000210"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289587" elapsed="0.000392"/>
+</if>
+<status status="NOT RUN" start="2026-07-22T14:10:40.289355" elapsed="0.000651"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.288853" elapsed="0.001172"/>
+</if>
+<var name="${index}">0</var>
+<status status="PASS" start="2026-07-22T14:10:40.285689" elapsed="0.004359"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.291047" level="INFO">${key} = | metadata.environment | Production</msg>
+<var>${key}</var>
+<arg>${expected_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.290402" elapsed="0.000673"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.291491" level="INFO">${next_index} = 3</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.291225" elapsed="0.000286"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.291666" elapsed="0.000010"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.291573" elapsed="0.000122"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.291556" elapsed="0.000152"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.292207" level="INFO">${value} = |</msg>
+<var>${value}</var>
+<arg>${expected_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.291769" elapsed="0.000458"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['company']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292383" elapsed="0.000013"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292278" elapsed="0.000142"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['metadata']['environment']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292525" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292436" elapsed="0.000127"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_bool}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292671" elapsed="0.000015"/>
+</kw>
+<if>
+<branch type="IF" condition="${expected_bool}">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response_json['data']['active']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292799" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292731" elapsed="0.000100"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be False">
+<arg>${response_json['data']['active']}</arg>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292929" elapsed="0.000014"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292845" elapsed="0.000117"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292721" elapsed="0.000254"/>
+</if>
+<status status="NOT RUN" start="2026-07-22T14:10:40.292577" elapsed="0.000413"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.292265" elapsed="0.000737"/>
+</if>
+<var name="${index}">2</var>
+<status status="PASS" start="2026-07-22T14:10:40.290316" elapsed="0.002699"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.293642" level="INFO">${key} = | active</msg>
+<var>${key}</var>
+<arg>${expected_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.293228" elapsed="0.000433"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.293933" level="INFO">${next_index} = 5</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.293732" elapsed="0.000218"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294086" elapsed="0.000009"/>
+</break>
+<status status="NOT RUN" start="2026-07-22T14:10:40.293998" elapsed="0.000115"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.293984" elapsed="0.000148"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.294569" level="INFO">${value} = | false</msg>
+<var>${value}</var>
+<arg>${expected_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.294188" elapsed="0.000399"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['company']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294758" elapsed="0.000014"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294633" elapsed="0.000162"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['metadata']['environment']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294900" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294811" elapsed="0.000122"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_bool}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295032" elapsed="0.000011"/>
+</kw>
+<if>
+<branch type="IF" condition="${expected_bool}">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response_json['data']['active']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295136" elapsed="0.000013"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295082" elapsed="0.000088"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be False">
+<arg>${response_json['data']['active']}</arg>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295248" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295185" elapsed="0.000093"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:40.295073" elapsed="0.000217"/>
+</if>
+<status status="NOT RUN" start="2026-07-22T14:10:40.294947" elapsed="0.000357"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.294622" elapsed="0.000693"/>
+</if>
+<var name="${index}">4</var>
+<status status="PASS" start="2026-07-22T14:10:40.293181" elapsed="0.002147"/>
+</iter>
+<iter>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.295909" level="INFO">${key} = |</msg>
+<var>${key}</var>
+<arg>${expected_table[${index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.295518" elapsed="0.000409"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-07-22T14:10:40.296201" level="INFO">${next_index} = 7</msg>
+<var>${next_index}</var>
+<arg>${index} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.295994" elapsed="0.000224"/>
+</kw>
+<if>
+<branch type="IF" condition="${next_index} &gt;= ${total_items}">
+<break>
+<status status="PASS" start="2026-07-22T14:10:40.296341" elapsed="0.000020"/>
+</break>
+<status status="PASS" start="2026-07-22T14:10:40.296263" elapsed="0.000117"/>
+</branch>
+<status status="PASS" start="2026-07-22T14:10:40.296252" elapsed="0.000143"/>
+</if>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${value}</var>
+<arg>${expected_table[${next_index}].strip()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296453" elapsed="0.000013"/>
+</kw>
+<if>
+<branch type="IF" condition="'${key}' == 'company'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['company']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296554" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296506" elapsed="0.000081"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'metadata.environment'">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_json['data']['metadata']['environment']}</arg>
+<arg>${value}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296646" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296600" elapsed="0.000077"/>
+</branch>
+<branch type="ELSE IF" condition="'${key}' == 'active'">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${expected_bool}</var>
+<arg>False if "${value}".lower() == "false" else True</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296739" elapsed="0.000011"/>
+</kw>
+<if>
+<branch type="IF" condition="${expected_bool}">
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${response_json['data']['active']}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296835" elapsed="0.000011"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296788" elapsed="0.000076"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be False">
+<arg>${response_json['data']['active']}</arg>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296935" elapsed="0.000012"/>
+</kw>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296877" elapsed="0.000089"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296780" elapsed="0.000198"/>
+</if>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296690" elapsed="0.000301"/>
+</branch>
+<status status="NOT RUN" start="2026-07-22T14:10:40.296497" elapsed="0.000506"/>
+</if>
+<var name="${index}">6</var>
+<status status="PASS" start="2026-07-22T14:10:40.295475" elapsed="0.001542"/>
+</iter>
+<var>${index}</var>
+<value>0</value>
+<value>${total_items}</value>
+<value>2</value>
+<status status="PASS" start="2026-07-22T14:10:40.285095" elapsed="0.011942"/>
+</for>
+<arg>| company</arg>
+<arg>| Global Tech Corp |</arg>
+<arg>| metadata.environment | Production</arg>
+<arg>|</arg>
+<arg>| active</arg>
+<arg>| false</arg>
+<arg>|</arg>
+<status status="PASS" start="2026-07-22T14:10:40.281695" elapsed="0.015390"/>
+</kw>
+<tag>API</tag>
+<tag>DataDriven</tag>
+<tag>PayloadMutation</tag>
+<status status="PASS" start="2026-07-22T14:10:39.831990" elapsed="0.465387"/>
+</test>
+<status status="PASS" start="2026-07-22T14:10:39.822943" elapsed="0.475028"/>
+</suite>
+<status status="PASS" start="2026-07-22T14:10:38.048670" elapsed="2.249740"/>
+</suite>
+<suite id="s1-s2" name="Ui" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\tests\ui">
+<suite id="s1-s2-s1" name="Login Ui" source="C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\tests\ui\login_ui.robot">
+<test id="s1-s2-s1-t1" name="Scenario: Successful Platform Authentication Via UI" line="6">
+<kw name="Given the user navigates to the portal" owner="login_ui_steps">
+<kw name="Open Login Page" owner="LoginPage">
+<kw name="New Browser" owner="Browser">
+<msg time="2026-07-22T14:10:40.556994" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\pvmrm\\Documents\\workspace\\RobotFramework_Tutorial\\RobotFramework_API-UI\\browser\\traces\\temp\\0b9a42d7-d781-47c3-9f55-3972055d57f3"}</msg>
+<msg time="2026-07-22T14:10:40.656748" level="INFO">Starting Browser process C:\Users\pvmrm\Documents\workspace\RobotFramework_Tutorial\RobotFramework_API-UI\.venv\Lib\site-packages\Browser\wrapper\index.js using at 127.0.0.1:63461</msg>
+<msg time="2026-07-22T14:10:43.579683" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\pvmrm\\Documents\\workspace\\RobotFramework_Tutorial\\RobotFramework_API-UI\\browser\\traces\\temp\\0b9a42d7-d781-47c3-9f55-3972055d57f3"}</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>headless=${HEADLESS}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2026-07-22T14:10:40.556115" elapsed="3.024115"/>
+</kw>
+<kw name="New Context" owner="Browser">
+<msg time="2026-07-22T14:10:43.584237" level="INFO">{
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "forcedColors": "none",
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  }
+}</msg>
+<msg time="2026-07-22T14:10:43.598166" level="INFO">Successfully created context. </msg>
+<msg time="2026-07-22T14:10:43.598324" level="INFO">{'acceptDownloads': True, 'bypassCSP': False, 'forcedColors': 'none', 'ignoreHTTPSErrors': False, 'javaScriptEnabled': True, 'offline': False, 'reducedMotion': 'no-preference', 'serviceWorkers': 'allow', 'viewport': {'width': 1280, 'height': 720}}</msg>
+<arg>viewport={'width': 1280, 'height': 720}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<status status="PASS" start="2026-07-22T14:10:43.580505" elapsed="0.017962"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2026-07-22T14:10:48.202293" level="INFO">Successfully initialized new page object and opened url: https://the-internet.herokuapp.com/login</msg>
+<arg>${BASE_URL_UI}/login</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2026-07-22T14:10:43.598713" elapsed="4.603757"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:40.555768" elapsed="7.646808"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:40.555435" elapsed="7.647189"/>
+</kw>
+<kw name="When the user submits valid enterprise credentials" owner="login_ui_steps">
+<kw name="Fill Login Credentials" owner="LoginPage">
+<kw name="Type Text" owner="Browser">
+<msg time="2026-07-22T14:10:48.204031" level="INFO">Types the text 'tomsmith' in the given field.</msg>
+<arg>${TXT_USERNAME}</arg>
+<arg>${username}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2026-07-22T14:10:48.203635" elapsed="0.040335"/>
+</kw>
+<kw name="Type Secret" owner="Browser">
+<arg>${TXT_PASSWORD}</arg>
+<arg>$password</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given secret from ``variable_name`` into the text field
+found by ``selector``.</doc>
+<status status="PASS" start="2026-07-22T14:10:48.244161" elapsed="0.030454"/>
+</kw>
+<arg>tomsmith</arg>
+<arg>SuperSecretPassword!</arg>
+<status status="PASS" start="2026-07-22T14:10:48.203398" elapsed="0.071371"/>
+</kw>
+<kw name="Submit Credentials" owner="LoginPage">
+<kw name="Click" owner="Browser">
+<msg time="2026-07-22T14:10:48.275653" level="INFO">Clicks the element 'css=button[type="submit"]'.</msg>
+<arg>${BTN_LOGIN}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2026-07-22T14:10:48.275249" elapsed="0.267051"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:48.274934" elapsed="0.267491"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:48.203024" elapsed="0.339449"/>
+</kw>
+<kw name="Then the application dashboard should load successfully" owner="login_ui_steps">
+<kw name="Verify Flash Message Contains" owner="LoginPage">
+<kw name="Get Text" owner="Browser">
+<msg time="2026-07-22T14:10:48.591768" level="INFO">Text: [' You logged into a secure area!\n×']</msg>
+<arg>${LBL_FLASH}</arg>
+<arg>contains</arg>
+<arg>${expected_text}</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2026-07-22T14:10:48.543382" elapsed="0.048490"/>
+</kw>
+<arg>You logged into a secure area!</arg>
+<status status="PASS" start="2026-07-22T14:10:48.543139" elapsed="0.048833"/>
+</kw>
+<status status="PASS" start="2026-07-22T14:10:48.542791" elapsed="0.049228"/>
+</kw>
+<kw name="Close Browser" owner="Browser" type="TEARDOWN">
+<msg time="2026-07-22T14:10:48.635575" level="INFO">Closed all browsers</msg>
+<arg>ALL</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-07-22T14:10:48.592354" elapsed="0.043369"/>
+</kw>
+<tag>Smoke</tag>
+<tag>UI</tag>
+<status status="PASS" start="2026-07-22T14:10:40.554941" elapsed="8.080992"/>
+</test>
+<status status="PASS" start="2026-07-22T14:10:40.299649" elapsed="8.341799"/>
+</suite>
+<status status="PASS" start="2026-07-22T14:10:40.298739" elapsed="8.346974"/>
+</suite>
+<status status="PASS" start="2026-07-22T14:10:38.021343" elapsed="10.625030"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">API</stat>
+<stat pass="1" fail="0" skip="0">DataDriven</stat>
+<stat pass="1" fail="0" skip="0">DataIngestion</stat>
+<stat pass="1" fail="0" skip="0">PayloadMutation</stat>
+<stat pass="2" fail="0" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+<stat pass="1" fail="0" skip="0">UI</stat>
+</tag>
+<suite>
+<stat name="Api &amp; Ui" id="s1" pass="5" fail="0" skip="0">Api &amp; Ui</stat>
+<stat name="Api" id="s1-s1" pass="4" fail="0" skip="0">Api &amp; Ui.Api</stat>
+<stat name="Customer Api" id="s1-s1-s1" pass="3" fail="0" skip="0">Api &amp; Ui.Api.Customer Api</stat>
+<stat name="Data Driven Payloads" id="s1-s1-s2" pass="1" fail="0" skip="0">Api &amp; Ui.Api.Data Driven Payloads</stat>
+<stat name="Ui" id="s1-s2" pass="1" fail="0" skip="0">Api &amp; Ui.Ui</stat>
+<stat name="Login Ui" id="s1-s2-s1" pass="1" fail="0" skip="0">Api &amp; Ui.Ui.Login Ui</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

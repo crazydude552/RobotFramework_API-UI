@@ -1,0 +1,24 @@
+# Simple authentication details
+token: "sk_enterprise_mock_token_2026"
+
+# Query parameters for the GET request
+get_user_params:
+  id: "USR-9982"
+  include_profile: "true"
+
+# Large JSON payload structure for the heavy POST request
+large_payload:
+  company: "Acme Enterprise Solutions"
+  industry: "Quality Engineering"
+  active: true
+  metadata:
+    version: "2.4.1"
+    environment: "Staging"
+  departments:
+    - name: "Information Technology"
+      headcount: 142
+      budget: 1250000.50
+    - name: "Quality Assurance"
+      headcount: 38
+      budget: 450000.00
+  tags: ["automated", "enterprise", "performance-tested", "yaml-injected"]
